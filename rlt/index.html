@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RLT</title>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="./static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/css/Highlight-Clean.css">
+  <link rel="stylesheet" href="./static/css/styles.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+
+<style>
+  .publication-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .highlighted-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .highlighted-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  }
+  .highlighted-link .icon {
+    margin-right: 8px;
+    font-size: 20px;
+  }
+  .github-link {
+    background: linear-gradient(45deg, #4CAF50, #2196F3);
+  }
+  .arxiv-link {
+    background: linear-gradient(45deg, #FFB74D, #FFA726);
+  }
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 12px rgba(33, 150, 243, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+    }
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+  .title-container {
+    text-align: center;
+    padding: 25px 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .main-title {
+    font-size: 3.0rem;
+    font-weight: 800;
+    margin-right: 10px;
+    background: linear-gradient(45deg, #1b25bc, #ff00b7, #00d1c7, #4169E1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradient-shift 5s ease infinite;
+  }
+
+  .subtitle {
+    font-size: 3.0rem;
+    color: #333;
+    font-weight: 400;
+  }
+  .title-au {
+    font-size: 1.8rem;
+    color: #808080;
+    font-weight: 300;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .hero.is-light {
+    background: linear-gradient(135deg, #ffcef8, #b4e3f8, #c1d0ff);
+    padding: 10px 0;
+  }
+
+  .hero .container.is-max-desktop {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .hero .hero-body {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero .video-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  
+  .hero .video-container:hover {
+    transform: translateY(-5px);
+  }
+  
+  .hero #video {
+    width: 100%;
+    display: block;
+  }
+
+  .dataset-btn {
+    background-color: #4a4a4a;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  .dataset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .dataset-btn.active {
+    background-color: #00d1b2;
+  }
+  .container.is-widescreen {
+    max-width: 1440px !important;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .container.is-middlewidescreen {
+    max-width: 1200px !important;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .video-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  #result-video {
+    width: 100%;
+    height: auto;
+    max-height: 800px;
+    object-fit: contain;
+  }
+  .video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  .title.is-3 {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .title-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .main-title {
+      font-size: 2rem;
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+    .subtitle {
+      font-size: 2rem;
+    }
+    .hero.is-light {
+      padding: 30px 0;
+    }
+    .hero .video-container {
+      border-radius: 10px;
+    }
+  }
+
+  .column.is-narrow {
+    padding: 0 10px;
+  }
+  .field {
+    text-align: center;
+  }
+  .label {
+    margin-bottom: 5px;
+  }
+
+  /* Change this existing style */
+.section.is-light {
+  background: linear-gradient(135deg, #e0e6fa, #e8f2f5, #dbc4ff);
+  padding: 20px 0 10px 0; /* Reduced padding, especially at the bottom */
+}
+
+  .section.is-light .container {
+    max-width: 1440px !important;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .section.is-light .hero-body {
+    padding: 2rem 1.5rem;
+  }
+
+  .colorful-title {
+    text-align: center;
+    padding: 20px 0;
+    color: #7e56d0;
+    font-size: 2.2rem;
+    font-weight: 1000;
+    margin-bottom: 30px;
+  }
+
+  .colorful-title h2 {
+      margin: 0;
+      padding: 0;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .results-carousel {
+    margin-top: 10px;
+  }
+  .section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  br {
+    display: none;
+  }
+  .carousel {
+    margin: 0;
+    padding: 0;
+  }
+  .carousel .item {
+    margin: 0;
+    padding: 0;
+  }
+  .carousel video {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  .section-spacing {
+    margin-top: 2rem;
+  }
+  .container {
+    margin-bottom: 1rem;
+  }
+  /* Carousel styles only for sample results section */
+  .results-carousel {
+    margin: 0;
+    padding: 0;
+  }
+  .results-carousel .item {
+    margin: 0;
+    padding: 0;
+  }
+  .results-carousel video {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  /* Section spacing */
+  .section-spacing {
+    margin-top: 2rem;
+  }
+  /* Container spacing */
+  .container {
+    margin-bottom: 1rem;
+  }
+  .swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+  }
+
+  .swiper-slide video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Adjust pagination dots spacing */
+  .swiper-pagination {
+    position: relative;
+    bottom: -10px !important;
+    margin-bottom: 0;
+  }
+  
+  .swiper-horizontal>.swiper-pagination-bullets, 
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 0px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 30px 20px;
+    border-radius: 5px;
+  }
+
+  .swiper-pagination {
+    bottom: 5px !important;
+  }
+
+  .swiper {
+    margin-bottom: 1rem !important; /* Reduce space after carousel */
+  }
+
+  .content.has-text-centered {
+    margin-bottom: 1rem; /* Reduce space after the text content */
+  }
+
+  .swiper {
+    margin: 0 !important; /* Remove all margins */
+  }
+
+  .swiper-wrapper {
+    margin-bottom: 0 !important; /* Ensure no bottom margin on wrapper */
+  }
+
+  .content.has-text-centered {
+    margin-bottom: 0.5rem; /* Reduce space after the text content */
+  }
+
+  /* Add more specific override for the carousel container */
+  .section.is-light .container .swiper {
+    margin: 0 !important;
+  }
+
+  .teaser-carousel {
+    height: auto !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .swiper-pagination {
+    bottom: 0 !important;
+    position: relative !important;
+  }
+</style>
+<body>
+  <div class="theme-toggle">
+    <button id="theme-toggle-btn" aria-label="Toggle dark mode">
+      <span class="icon">🌙</span>
+    </button>
+  </div>
+<section class="section is-light" id="results">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="content has-text-centered">
+          <h1 class="main-title">Don't Look Twice:</h1>
+          <br>
+          <h1 class="main-title">Faster Video Transformers with Run-Length Tokenization</h1>
+        </div>
+
+        <div class="is-size-5 publication-authors" style="text-align: center; line-height: 1.8;">
+          <p>MSCV Team12: Guanglei Zhu, Sihan Liu</p>
+          <p>Advisor: Prof. László A. Jeni</p>
+          <p>Collaborator: Rohan Choudhury</p>
+        </div>
+
+        <div class="publication-links">
+          <a class="highlighted-link" style="background-color: #4CAF50;" href="https://arxiv.org/abs/2411.05222">
+            <i class="fas fa-file-pdf"></i>
+            Paper
+          </a>
+          <a class="highlighted-link" style="background-color: #FF5722;" href="https://github.com/rccchoudhury/rlt">
+            <i class="fab fa-github"></i>
+            Code
+          </a>
+          <a class="highlighted-link" style="background-color: #FF5722;" href="https://docs.google.com/presentation/d/1mQXOtWXeZQEyIt5VcHTMk5KDUj6DpIcUYnHqXpuNqQ4/edit#slide=id.p">
+            <i class="fab fa-github"></i>
+            2024Fall Slides
+          </a>
+          <a class="highlighted-link" style="background-color: #FF5722;" href="https://docs.google.com/presentation/d/1N9EIBaRt2oeVkhS7uxWSy3l03Zv9bZpOYb_1skhOfCs/edit?usp=sharing">
+            <i class="fab fa-github"></i>
+            2024Spring Slides
+          </a>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <div class="container" style="max-width: 800px;">
+            <div class="swiper teaser-carousel">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                    <source src="./assets/videos/scrat_test.webm" type="video/webm">
+                    <source src="./assets/videos/scrat_test.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="swiper-slide">
+                  <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                    <source src="./assets/videos/vis_one_piece.webm" type="video/webm">
+                    <source src="./assets/videos/vis_one_piece.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="swiper-slide">
+                  <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                    <source src="./assets/videos/vis_tennis.webm" type="video/webm">
+                    <source src="./assets/videos/vis_tennis.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="swiper-slide">
+                  <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                    <source src="./assets/videos/vis_bts.webm" type="video/webm">
+                    <source src="./assets/videos/vis_bts.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+
+            <div class="content" style="text-align: center; margin-top: 0 max-width: 800px; margin-left: auto; margin-right: auto;">
+              <p style="font-size: 1rem; color: #4a4a4a;">
+                Inspired by video compressors, RLT efficiently identifies patches from the input video that are repeated, and prunes them from the input. It then uses a duration encoding to tell the transformer what patches were removed.
+
+                For all the videos on this page, the lighter colored patches represent patches that are masked out. These semantically correspond to parts of the video that are not moving and are almost exactly repeated over time.
+              </p>
+            </div>
+
+            <style>
+              .teaser-carousel {
+                width: 100%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+              }
+              
+              .teaser-carousel .swiper-slide {
+                text-align: center;
+                background: #000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+
+              .teaser-carousel video {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+              }
+
+              .teaser-carousel .swiper-button-next,
+              .teaser-carousel .swiper-button-prev {
+                color: #fff;
+                background: rgba(0,0,0,0.5);
+                padding: 30px 20px;
+                border-radius: 5px;
+              }
+
+              .teaser-carousel .swiper-pagination-bullet {
+                width: 10px;
+                height: 10px;
+                background: rgba(255,255,255,0.8);
+              }
+            </style>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content">
+      <p style="text-align: justify;">
+        We present Run-Length Tokenization (RLT), a simple and efficient approach to speed up video transformers by removing redundant tokens from the input. Existing methods prune tokens progressively, incurring significant overhead and resulting in no speedup during training. Other approaches are content-agnostic: they reduce the number of tokens by a constant factor and thus require tuning for different datasets and videos for optimal performance. Our insight is that we can efficiently identify which patches are redundant before running the model. In contrast, RLT efficiently identifies and removes all tokens that are repeated over time before running the model, replacing them with a single token and a positional encoding to represent its new length. This approach is both content-aware, requiring no tuning for different datasets, and fast, incurring negligible overhead. RLT can increase the throughput of pre-trained transformers without any additional training, increasing throughput by 40% with only 0.1% drop in accuracy on action recognition. It also results in a large speedup in training, reducing the wall-clock time to fine-tune a video transformer by more than 40% while matching the baseline model performance. These benefits extend to video-language tasks, with RLT matching baseline performance on Epic Kitchens-100 multi-instance retrieval while reducing training time and throughput by 30%. On Kinetics-400, Something-Something-v2, and UCF101, RLT is able to reduce the total token count by 30%, and on longer videos or higher FPS settings, can reduce the token count by up to 80%.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Motivation</h2>
+    <div class="content">
+      <ul style="list-style-type: disc; margin-left: 20px;">
+        <li>Videos are large and computationally expensive to process using transformers, making efficiency a critical challenge.</li>
+        <li>Many existing approaches attempt to reduce the number of tokens in videos but often rely on content-agnostic methods.</li>
+        <li>These works remove constant numbers of tokens per video instead of being content-aware.</li>
+        <li>We provide a content-aware tokenization method that is significantly faster with no loss in performance.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Method Overview</h2>
+    
+    <!-- RLT Overview Figure -->
+    <div class="content has-text-centered">
+      <img src="./assets/rlt_overview.png" alt="RLT Overview" style="width: 100%; max-width: 800px; margin-bottom: 2rem;">
+    </div>
+
+    <!-- RLT Description -->
+    <div class="content">
+      <p>
+        RLT works by first comparing the input frames to find redundant patches. We deem two patches to be redundant if the the mean L1 norm of their pixel difference
+        is less than a input threshold. For every patch in each frame, we compare with the following frame, and remove the patches that are similar enough. 
+        Once those are removed, we compute the "run-length", or number of consecutive patches in a spatial location that were removed. This represents the 
+        'duration' of the token, and is expressed to the transformer via the length embedding. We display this in the below plot through a toy example:
+      </p>
+    </div>
+
+    <!-- Toy Example Figure -->
+    <div class="content has-text-centered">
+      <img src="./assets/rlt_toy_example.png" alt="RLT Toy Example" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+    </div>
+
+    <div class="content">
+      <p>
+       In this example, each token consists of two consecutive patches in the same spatial location. Repeated tokens over time are replaced with 
+       a single token at the beginning of the sequence, and the duration of the token is encoded via the length embedding. For example, the green 
+       tokens on the top row all have a duration of 3. This enables RLT to remove 6 tokens from the input, while compensating for the loss of information.
+
+       An added benefit of RLT is that it does not require running the model to determine the new length of the input. This enables us to 
+       avoid having to pad examples, and can use block-diagonal attention masks to efficiently run attention on large batches of examples with 
+       no overhead. This enables us to make the most of the token reduction, while other methods typically show lower theoretical GFLOPS but no
+       wall-clock speedup in pracice.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Numerical Results</h2>
+    <div class="content">
+      <p style="text-align: justify;">
+        For Kinetics-400 and Something-Something-v2 datasets, RLT increases the throughput by up to 40% in both training and inference, without any loss in performance.
+      </p>
+      <div class="content has-text-centered" style="margin-top: 20px;">
+        <img src="./assets/images/numerical_results.jpg" alt="Numerical Results" style="width: 100%; max-width: 800px;">
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Figure: Throughput improvements on Kinetics-400 and Something-Something-v2 datasets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container" style="max-width: 900px;">
+    <h2 class="title is-3">Sample Visualizations</h2>
+    <div class="content" style="margin-bottom: 1rem;">
+      <p style="font-size: 1rem; color: #4a4a4a;">
+        Below are sample visualizations of RLT on standard action recognition datasets. RLT consistently removes repeated tokens that correspond to regions with no motion, while retaining all tokens that provide new information. Videos with large amounts of motion thus contain more tokens than videos with minimal motion.
+      </p>
+    </div>
+    <h3 class="title is-4" style="margin-top: 0; margin-bottom: 1rem;">Kinetics-400</h3>
+    <div class="swiper kinetics-carousel">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_cartwheel.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_cartwheel.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Cartwheel</div>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_clarinet.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_clarinet.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Playing Clarinet</div>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_cleanjerk.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_cleanjerk.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Clean and Jerk</div>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_cricket.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_cricket.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Cricket</div>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_egghunting.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_egghunting.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Egg Hunting</div>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_eyebrow.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_eyebrow.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Raising Eyebrows</div>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_fingersnap.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_fingersnap.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Finger Snapping</div>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_jogging.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_jogging.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Jogging</div>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/kinetics/vis_ukelele.webm" type="video/webm">
+            <source src="./assets/videos/kinetics/vis_ukelele.mp4" type="video/mp4">
+          </video>
+          <div class="video-caption">Playing Ukulele</div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+
+  <div class="container" style="max-width: 900px; margin-top: 1rem;">
+    <h3 class="title is-4" style="margin-bottom: 1rem;">Something-Something v2</h3>
+    <div class="swiper ssv2-carousel">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/ssv2/vis_ssv2_1.webm" type="video/webm">
+            <source src="./assets/videos/ssv2/vis_ssv2_1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/ssv2/vis_ssv2_2.webm" type="video/webm">
+            <source src="./assets/videos/ssv2/vis_ssv2_2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/ssv2/vis_ssv2_3.webm" type="video/webm">
+            <source src="./assets/videos/ssv2/vis_ssv2_3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/ssv2/vis_ssv2_4.webm" type="video/webm">
+            <source src="./assets/videos/ssv2/vis_ssv2_4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/ssv2/vis_ssv2_5.webm" type="video/webm">
+            <source src="./assets/videos/ssv2/vis_ssv2_5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/ssv2/vis_ssv2_6.webm" type="video/webm">
+            <source src="./assets/videos/ssv2/vis_ssv2_6.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="swiper-slide">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="./assets/videos/ssv2/vis_ssv2_7.webm" type="video/webm">
+            <source src="./assets/videos/ssv2/vis_ssv2_7.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+
+  <style>
+    .swiper {
+      width: 100%;
+      padding-top: 20px;
+      padding-bottom: 100px;  
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height: 400px;
+    }
+
+    .swiper-slide video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+
+    .video-caption {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 30px;  
+      color: #333;
+      font-size: 1.1em;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #fff;
+      background: rgba(0,0,0,0.5);
+      padding: 30px 20px;
+      border-radius: 5px;
+    }
+
+    .swiper-pagination {
+      bottom: 40px !important;  
+    }
+
+    .swiper-pagination-bullet {
+      background: #333;
+      opacity: 0.5;
+      width: 10px;  
+      height: 10px;
+      margin: 0 6px;  
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: #007aff;
+    }
+  </style>
+</section>
+
+<section class="section">
+  <h2 class="title is-3">Team</h2>
+
+  <div class="container is-max-desktop">
+    <!-- Person 1 -->
+    <div class="columns is-vcentered" style="margin-top: 20px;">
+      <!-- Left: Photo -->
+      <div class="column is-one-third has-text-centered">
+        <img src="./assets/images/sihan.png" alt="Person 1 Photo" style="width: 50%; max-width: 300px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+      </div>
+      <!-- Right: Text -->
+      <div class="column">
+        <p style="font-size: 1.2rem; color: #4a4a4a;">
+          I am Sihan Liu, a final-year Master's student in MSCV at CMU. I completed my undergraduate studies at Boston University, majoring in Computer Science and Mathematics. My research primarily focuses on video transformers and generative AI. As part of my MSCV project, I have been conducting experiments on the Kinetics and Something-Something-v2 datasets, analyzing the differences in model speed and performance compared to baseline models, particularly in classification tasks.
+        </p>
+      </div>
+    </div>
+    <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
+    <!-- Person 2 -->
+    <div class="columns is-vcentered" style="margin-top: 20px;">
+      <!-- Left: Photo -->
+      <div class="column is-one-third has-text-centered">
+        <img src="./assets/images/guanglei.jpg" alt="Person 2 Photo" style="width: 50%; max-width: 300px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+      </div>
+      <!-- Right: Text -->
+      <div class="column">
+        <p style="font-size: 1.2rem; color: #4a4a4a;">
+          I am Guanglei Zhu. I am currently pursuing a Master's in Computer Vision at Carnegie Mellon University, driven by a passion for solving real-world problems using Machine Learning and Computer Vision. Previously, I interned at the Vector Institute under the guidance of Prof. Animesh Garg. I hold a Bachelor's degree in Computer Science from the University of Toronto. In my MSCV project, I am responsible for designing and conducting experiments on various datasets.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
